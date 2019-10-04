@@ -1,0 +1,57 @@
+@import "vars";
+
+@mixin showModal($duration: 0.4s, $timing-function: linear, $fill-mode: forwards) {
+    $y: calc((50vh + #{$modal-add-student-height}) * (-1));
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, $y);
+    animation-name: open;
+    animation-duration: $duration;
+    animation-timing-function: $timing-function;
+    animation-fill-mode: $fill-mode;
+    @content;
+
+    @keyframes open {
+        from {
+            transform: translate(-50%, $y);
+        }
+        to {
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+@mixin closeModal($duration: 0.3s, $timing-function: linear, $fill-mode: forwards) {
+    //  $y: calc((50vh + #{$modal-add-student-height}) * (-1));
+    $x: calc(50% + #{$modal-add-student-height});
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-name: close;
+    animation-duration: $duration;
+    animation-timing-function: $timing-function;
+    animation-fill-mode: $fill-mode;
+    @content;
+
+    @keyframes close {
+        0% {
+            transform: translate(-50%, -50%);
+        }
+        100% {
+            transform: translate($x, -50%);
+        }
+        /*
+            90% {
+                transform: translate($x, -50%);
+            }
+            95% {
+                transform: translate($x, $y);
+            }
+            100% {
+                transform: translate(-55%, $y);
+            }
+        */
+    }
+}
