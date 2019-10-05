@@ -241,7 +241,7 @@ module.exports = {
   output: {
     path: buildOutputPath,
     filename: "[name].bundle.js",
-    //  publicPath: imageOutputPublicPath
+    publicPath: imageOutputPublicPath
   },
   target: 'web',
   devtool: "eval-source-map",
